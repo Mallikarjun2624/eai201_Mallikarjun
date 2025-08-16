@@ -1,0 +1,55 @@
+def grade_student():
+    print(" AI Grading Assistant ")
+    
+    # Number of subjects
+    n = int(input("Enter number of subjects: "))
+    
+    subjects = {}
+    
+    for i in range(n):
+        subject = input(f"\nEnter subject {i+1} name: ")
+        marks = float(input(f"Enter marks for {subject} (out of 100): "))
+        
+        # Save subject and marks
+        subjects[subject] = marks
+    
+    print("\n Student Report ")
+    total = 0
+    
+    for sub, mark in subjects.items():
+         if mark >= 90:
+            grade = "A+"
+        elif mark >= 80:
+            grade = "A"
+        elif mark >= 70:
+            grade = "B"
+        elif mark >= 60:
+            grade = "C"
+        elif mark >= 50:
+            grade = "D"
+        else:
+            grade = "F"
+        
+        print(f"{sub}: {mark} -> Grade: {grade}")
+        total += mark
+    
+    avg = total / n
+    print("\nOverall Percentage:", round(avg, 2))
+    
+    # Final grade based on average
+    if avg >= 90:
+        final_grade = "A+"
+    elif avg >= 80:
+        final_grade = "A"
+    elif avg >= 70:
+        final_grade = "B"
+    elif avg >= 60:
+        final_grade = "C"
+    elif avg >= 50:
+        final_grade = "D"
+    else:
+        final_grade = "F"
+    
+    print("Final Grade:", final_grade)
+
+grade_student()
