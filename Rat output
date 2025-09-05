@@ -1,0 +1,27 @@
+#Input
+Enter number of junctions and pipes: 5 6
+Enter pipe connections (u v cost):
+0 1 2
+0 2 4
+1 2 1
+1 3 7
+2 4 3
+3 4 1
+
+Enter start junction: 0
+Enter goal junction: 4
+
+
+Enter heuristic values for each junction:
+Heuristic for junction 0: 7
+Heuristic for junction 1: 6
+Heuristic for junction 2: 2
+Heuristic for junction 3: 1
+Heuristic for junction 4: 0
+
+#output
+BFS (ignores cost): [0, 1, 2, 4]
+DFS (ignores cost): [0, 1, 3, 4]
+
+Uniform Cost Search: [0, 1, 2, 4] with total cost: 6
+A* Search: [0, 1, 2, 4] with total cost: 6
