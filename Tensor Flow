@@ -1,0 +1,35 @@
+# Step 1: Take slope and intercept from user
+# Step 2: Training data (X values, Y = mX + c)
+# Step 3: Build the model
+# Step 4: Compile the model
+# Step 5: Train the model
+# Step 6: Predict for a test value
+
+
+# Linear Regression with User Input (y = mx + c)
+import tensorflow as tf
+import numpy as np
+
+ Take slope and intercept from user
+m = float(input("Enter slope (m): "))
+c = float(input("Enter intercept (c): "))
+
+ Training data (X values, Y = mX + c)
+X = np.array([1, 2, 3, 4, 5], dtype=float)
+Y = m * X + c
+
+ Build the model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(1, input_shape=[1])
+])
+
+ Compile the model
+model.compile(optimizer="sgd", loss="mse")
+
+ Train the model
+model.fit(X, Y, epochs=100, verbose=0)
+
+ Predict for a test value
+x_test = 10.0
+y_pred = model.predict([x_test])
+print(f"Prediction for x={x_test} → y={y_pred[0][0]:.2f}")
