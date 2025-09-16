@@ -1,0 +1,195 @@
+import heapq
+import math
+
+# ------------ HEURISTICS ----------------
+def manhattan(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+def euclidean(a, b):
+    return math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
+
+def diagonal(a, b):
+    return max(abs(a[0] - b[0]), abs(a[1] - b[1]))
+
+
+# ------------ PATHFINDING ALGORITHMS ----------------
+def greedy_best_first(grid, start, goal, heuristic):
+    open_list = []
+    heapq.heappush(open_list, (heuristic(start, goal), start))
+    came_from = {}
+    visited = set()
+
+    while open_list:
+        _, current = heapq.heappop(open_list)
+
+        if current == goal:
+            return reconstruct_path(came_from, current), visited
+
+        visited.add(current)
+
+        for neighbor in get_neighbors(grid, current):
+            if neighbor not in visited:
+                came_from[neighbor] = current
+                heapq.heappush(open_list, (heuristic(neighbor, goal), neighbor))
+
+    return None, visited
+
+
+def astar(grid, start, goal, heuristic):
+    open_list = []
+    heapq.heappush(open_list, (0 + heuristic(start, goal), 0, start))
+    came_from = {}
+    g_score = {start: 0}
+    visited = set()
+
+    while open_list:
+        _, g, current = heapq.heappop(open_list)
+
+        if current == goal:
+            return reconstruct_path(came_from, current), visited
+
+        visited.add(current)
+
+        for neighbor in get_neighbors(grid, current):
+            tentative_g = g + 1
+            if neighbor not in g_score or tentative_g < g_score[neighbor]:
+                g_score[neighbor] = tentative_g
+                f = tentative_g + heuristic(neighbor, goal)
+                heapq.heappush(open_list, (f, tentative_g, neighbor))
+                came_from[neighbor] = current
+
+    return None, visited
+
+
+# ------------ HELPERS ----------------
+def get_neighbors(grid, node):
+    (x, y) = node
+    neighbors = []
+    moves = [(1,0), (-1,0), (0,1), (0,-1)]  # only 4-directional
+
+    for dx, dy in moves:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]):
+            if grid[nx][ny] != "1":  # not a wall
+                neighbors.append((nx, ny))
+
+    return neighbors
+
+
+def reconstruct_path(came_from, current):
+    path = [current]
+    while current in came_from:
+        current = came_from[current]
+        path.append(current)
+    path.reverse()
+    return path
+
+
+def print_grid(grid, path):
+    new_grid = [row[:] for row in grid]  # copy
+    for (x, y) in path:
+        if new_grid[x][y] not in ["S", "G"]:
+            new_grid[x][y] = "*"
+    for row in new_grid:
+        print(" ".join(row))
+    print()
+
+
+# ------------ MAIN ----------------
+if __name__ == "__main__":
+    # Example grid
+    grid = [
+        list("S0010"),
+        list("1101G"),
+        list("00010"),
+        list("11011"),
+        list("00000")
+    ]
+
+    # Find start and goal
+    start, goal = None, None
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == "S":
+                start = (i, j)
+            elif grid[i][j] == "G":
+                goal = (i, j)
+
+    heuristics = {
+        "Manhattan": manhattan,
+        "Euclidean": euclidean,
+        "Diagonal": diagonal
+    }
+
+    for name, h in heuristics.items():
+        print(f"\n--- Using {name} Heuristic ---")
+
+        # Greedy Best-First
+        path, visited = greedy_best_first(grid, start, goal, h)
+        if path:
+            print(f"GBFS Path length: {len(path)} | Nodes explored: {len(visited)}")
+            print_grid(grid, path)
+        else:
+            print("GBFS: No path found")
+
+        # A* Search
+        path, visited = astar(grid, start, goal, h)
+        if path:
+            print(f"A* Path length: {len(path)} | Nodes explored: {len(visited)}")
+            print_grid(grid, path)
+        else:
+            print("A*: No path found")
+
+
+INPUT GRID:-
+S 0 0 1 0
+1 1 0 1 G
+0 0 0 1 0
+1 1 0 1 1
+0 0 0 0 0
+
+EXAMPLE OUTPUT:-
+--- Using Manhattan Heuristic ---
+GBFS Path length: 9 | Nodes explored: 8
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
+
+A* Path length: 9 | Nodes explored: 10
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
+
+--- Using Euclidean Heuristic ---
+GBFS Path length: 9 | Nodes explored: 8
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
+
+A* Path length: 9 | Nodes explored: 10
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
+
+--- Using Diagonal Heuristic ---
+GBFS Path length: 9 | Nodes explored: 8
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
+
+A* Path length: 9 | Nodes explored: 10
+S * * 1 0
+1 1 * 1 G
+0 0 * 1 0
+1 1 * 1 1
+0 0 * * *
