@@ -1,0 +1,361 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+from collections import deque
+import heapq
+import webbrowser
+
+# ----------------------------
+# DISTANCES DATA (meters)
+# ----------------------------
+distances = {
+    "Admin Block": {
+        "Security Entrance": 80, "Library": 16, "Auditorium": 17, "Academic Block": 126,
+        "Cafeteria": 35, "Main Gate": 160, "Exit Gate": 220, "Medical": 80,
+        "Hostel": 506, "Mini Mart": 434, "Food Court": 355, "Sports": 850
+    },
+    "Academic Block": {
+        "Security Entrance": 240, "Library": 46, "Auditorium": 150, "Cafeteria": 27,
+        "Main Gate": 210, "Exit Gate": 250, "Medical": 85, "Hostel": 380,
+        "Mini Mart": 410, "Food Court": 192, "Admin Block": 126, "Sports": 561
+    },
+    "Library": {
+        "Security Entrance": 100, "Auditorium": 3, "Academic Block": 46, "Cafeteria": 63,
+        "Main Gate": 275, "Exit Gate": 240, "Medical": 75, "Hostel": 450,
+        "Mini Mart": 465, "Food Court": 470, "Admin Block": 16, "Sports": 857
+    },
+    "Cafeteria": {
+        "Security Entrance": 130, "Library": 63, "Auditorium": 10, "Academic Block": 27,
+        "Main Gate": 276, "Exit Gate": 270, "Medical": 90, "Hostel": 520,
+        "Mini Mart": 585, "Food Court": 355, "Admin Block": 35, "Sports": 920
+    },
+    "Auditorium": {
+        "Security Entrance": 120, "Library": 3, "Academic Block": 150, "Cafeteria": 10,
+        "Main Gate": 286, "Exit Gate": 260, "Medical": 80, "Hostel": 510,
+        "Mini Mart": 574, "Food Court": 344, "Admin Block": 17, "Sports": 930
+    }
+}
+
+# ----------------------------
+# STAFF CONTACTS
+# ----------------------------
+contacts = {
+    "Admin": {
+        "Admission": [{"name": "Thanushree", "phone": "08031233133"},
+                      {"name": "Sri Vijay Kumar", "phone": "08031233103"}],
+        "Registrar": [{"name": "Sri Gautam", "phone": "08031233104"},
+                      {"name": "Sri Dhanashri", "phone": "08031233101"}],
+        "Communication": {"name": "Sri Chandrashekar", "phone": "08031233107"},
+        "Finance": {"name": "Sri Sudheerda K.M", "phone": "08031233102"},
+        "IT Support": {"name": "Sri Sachin Goni", "phone": "08031233109"}
+    },
+    "Academic": {
+        "VC Office": [
+            {"name": "Shilparanganathra", "phone": "08031233122"},
+            {"name": "Ashwin Kumar", "phone": "Contact VC Office"},
+            {"name": "Subhant T. Joshi", "phone": "08031233104"},
+            {"name": "Dr. Padmavathi B.S", "phone": "Contact VC Office"},
+            {"name": "Dr. Vineeth Paleni", "phone": "Contact VC Office"}
+        ]
+    },
+    "Library": {"name": "Bharathkumar V", "phone": "8861775721"},
+    "Medical Center": {"name": "Dr. Anjana", "phone": "08031233103"},
+    "Sports & P.E": {"name": "Sri Hemanth", "phone": "9449141869"},
+    "Hostel": {
+        "Girls": {"name": "Jayshree", "phone": "9513228510"},
+        "Boys": {"name": "Ullas Kallur", "phone": "08031233100"}
+    }
+}
+
+# ----------------------------
+# PATHFINDING ALGORITHMS
+# ----------------------------
+def bfs(start, goal):
+    queue = deque([(start, [start], 0)])
+    visited = set()
+    while queue:
+        node, path, dist = queue.popleft()
+        if node == goal:
+            return path, dist
+        if node not in visited:
+            visited.add(node)
+            for nbr, d in distances.get(node, {}).items():
+                if nbr not in visited:
+                    queue.append((nbr, path + [nbr], dist + d))
+    return None, None
+
+def dfs(start, goal):
+    stack = [(start, [start], 0)]
+    visited = set()
+    while stack:
+        node, path, dist = stack.pop()
+        if node == goal:
+            return path, dist
+        if node not in visited:
+            visited.add(node)
+            for nbr, d in distances.get(node, {}).items():
+                if nbr not in visited:
+                    stack.append((nbr, path + [nbr], dist + d))
+    return None, None
+
+def ucs(start, goal):
+    queue = [(0, start, [start])]
+    visited = set()
+    while queue:
+        cost, node, path = heapq.heappop(queue)
+        if node == goal:
+            return path, cost
+        if node not in visited:
+            visited.add(node)
+            for nbr, d in distances.get(node, {}).items():
+                if nbr not in visited:
+                    heapq.heappush(queue, (cost + d, nbr, path + [nbr]))
+    return None, None
+
+def heuristic(a, b):
+    return 0
+
+def a_star(start, goal):
+    queue = [(0, 0, start, [start])]
+    visited = set()
+    while queue:
+        est, cost, node, path = heapq.heappop(queue)
+        if node == goal:
+            return path, cost
+        if node not in visited:
+            visited.add(node)
+            for nbr, d in distances.get(node, {}).items():
+                if nbr not in visited:
+                    new_cost = cost + d
+                    est_total = new_cost + heuristic(nbr, goal)
+                    heapq.heappush(queue, (est_total, new_cost, nbr, path + [nbr]))
+    return None, None
+
+# ----------------------------
+# CHATBOT RESPONSES (keywords)
+# ----------------------------
+# mapping of keyword sets to reply strings
+chatbot_knowledge = {
+    ("library", "where is library", "library timings"): "The Library is near the Auditorium and Admin Block. Timings: 8AM-10PM.",
+    ("vc", "vice chancellor", "who is vc", "vc office"): "The VC’s office is in Academic Block. Contact: Shilparanganathra (08031233122).",
+    ("hostel", "hostel contact"): "Hostel contacts - Girls: Jayshree (9513228510); Boys: Ullas Kallur (08031233100).",
+    ("medical", "medical center", "doctor"): "Medical Center: Dr. Anjana (08031233103).",
+    ("sports", "sports pe", "sports & p.e"): "Sports & P.E: Sri Hemanth (9449141869).",
+    ("admission", "how to apply", "admission contact"): "Admission: Thanushree (08031233133), Sri Vijay Kumar (08031233103).",
+    ("map", "campus map", "open map"): "Click the 'Open Campus Map' button to view Chanakya University's map.",
+    ("hello", "hi", "hey"): "Hello! I am the Chanakya University assistant. Ask me about locations, staff, or distances.",
+    ("thanks", "thank you"): "You're welcome! Anything else I can help with?"
+}
+
+def chatbot_lookup(user_text):
+    text = user_text.lower()
+    # exact keyword contains check
+    for keys, resp in chatbot_knowledge.items():
+        for key in keys:
+            if key in text:
+                return resp
+    # fallback: try to answer simple distance question "how far from X to Y"
+    if "how far" in text or "distance" in text:
+        # try to parse "from <A> to <B>" or "between <A> and <B>"
+        words = text.replace("?", "").split()
+        if "from" in words and "to" in words:
+            try:
+                i = words.index("from")
+                a = words[i+1]
+                j = words.index("to")
+                b = words[j+1]
+                # try to match keys loosely by capitalizing and matching start
+                a_match = next((k for k in distances.keys() if k.lower().startswith(a)), None)
+                b_match = next((k for k in distances.keys() if k.lower().startswith(b)), None)
+                if a_match and b_match and b_match in distances.get(a_match, {}):
+                    return f"Distance from {a_match} to {b_match} is {distances[a_match][b_match]} meters."
+            except Exception:
+                pass
+    return "Sorry, I don't know that yet. Try asking about library, VC, hostel, medical, sports, admission, or 'map'."
+
+# ----------------------------
+# UI ACTIONS
+# ----------------------------
+def find_path(algo):
+    start = start_var.get()
+    end = end_var.get()
+    if not start or not end:
+        messagebox.showwarning("Input Error", "Please select both start and destination.")
+        return
+    if start == end:
+        messagebox.showinfo("Result", "You are already at the destination.")
+        return
+
+    if algo == "BFS":
+        path, dist = bfs(start, end)
+    elif algo == "DFS":
+        path, dist = dfs(start, end)
+    elif algo == "UCS":
+        path, dist = ucs(start, end)
+    else:
+        path, dist = a_star(start, end)
+
+    if path:
+        out = f"{algo}: {' → '.join(path)} | Distance: {dist} meters"
+    else:
+        out = f"{algo}: No path found"
+    output_box.insert(tk.END, out + "\n")
+    output_box.see(tk.END)
+
+def search_staff():
+    dept = staff_var.get()
+    if not dept:
+        messagebox.showwarning("Input Error", "Please select a department/area.")
+        return
+    info = contacts.get(dept, None)
+    output_box.insert(tk.END, f"--- {dept} Contacts ---\n")
+    if isinstance(info, dict):
+        for key, value in info.items():
+            if isinstance(value, list):
+                for person in value:
+                    output_box.insert(tk.END, f"{key}: {person['name']} - {person['phone']}\n")
+            elif isinstance(value, dict):
+                output_box.insert(tk.END, f"{key}: {value['name']} - {value['phone']}\n")
+            else:
+                output_box.insert(tk.END, f"{key}: {value}\n")
+    elif isinstance(info, list):
+        for person in info:
+            output_box.insert(tk.END, f"{person['name']} - {person['phone']}\n")
+    else:
+        output_box.insert(tk.END, "No contacts found.\n")
+    output_box.insert(tk.END, "\n")
+    output_box.see(tk.END)
+
+def open_map():
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Chanakya University Map</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </head>
+    <body style="margin:0;">
+        <div id="map" style="width: 100%; height: 100vh;"></div>
+        <script>
+            var map = L.map('map').setView([13.1976, 77.7066], 16);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+            // Add a basic marker for Chanakya University
+            L.marker([13.1976, 77.7066]).addTo(map)
+                .bindPopup("<b>Chanakya University</b><br>Devanahalli").openPopup();
+        </script>
+    </body>
+    </html>
+    """
+    filename = "chanakya_map.html"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(html)
+    webbrowser.open(filename)
+
+# Chatbot quick-button handlers (predefined answers)
+def quick_reply(key):
+    text = chatbot_lookup(key)
+    chatbot_output_insert("You (button): " + key)
+    chatbot_output_insert("Bot: " + text + "\n")
+
+def chatbot_output_insert(msg):
+    chatbot_output.configure(state="normal")
+    chatbot_output.insert(tk.END, msg + "\n")
+    chatbot_output.configure(state="disabled")
+    chatbot_output.see(tk.END)
+
+def chatbot_ask_text():
+    user_text = chatbot_entry.get().strip()
+    if not user_text:
+        return
+    chatbot_entry.delete(0, tk.END)
+    chatbot_output_insert("You: " + user_text)
+    resp = chatbot_lookup(user_text)
+    chatbot_output_insert("Bot: " + resp + "\n")
+
+# ----------------------------
+# BUILD THE GUI
+# ----------------------------
+root = tk.Tk()
+root.title("Campus Path Navigator - Chanakya University")
+root.geometry("820x900")
+
+# banner
+welcome_label = tk.Label(root, text="Chanakya University Navigator",
+                         font=("Helvetica", 18, "bold"), fg="white", bg="darkblue")
+welcome_label.pack(fill="x", pady=5)
+
+main_frame = tk.Frame(root)
+main_frame.pack(padx=10, pady=10, fill="both", expand=True)
+
+# left frame: pathfinding & staff
+left = tk.Frame(main_frame)
+left.pack(side="left", padx=8, pady=8, anchor="n")
+
+ttk.Label(left, text="Start Location:").pack(anchor="w")
+start_var = tk.StringVar()
+ttk.Combobox(left, textvariable=start_var, values=list(distances.keys()), state="readonly").pack(fill="x")
+
+ttk.Label(left, text="Destination:").pack(anchor="w", pady=(6,0))
+end_var = tk.StringVar()
+ttk.Combobox(left, textvariable=end_var, values=list(distances.keys()), state="readonly").pack(fill="x")
+
+btns = tk.Frame(left)
+btns.pack(pady=8, fill="x")
+ttk.Button(btns, text="Find BFS Path", command=lambda: find_path("BFS")).grid(row=0, column=0, padx=4, pady=2)
+ttk.Button(btns, text="Find DFS Path", command=lambda: find_path("DFS")).grid(row=0, column=1, padx=4, pady=2)
+ttk.Button(btns, text="Find UCS Path", command=lambda: find_path("UCS")).grid(row=0, column=2, padx=4, pady=2)
+ttk.Button(btns, text="Find A* Path", command=lambda: find_path("A*")).grid(row=0, column=3, padx=4, pady=2)
+
+ttk.Button(left, text="Open Campus Map", command=open_map).pack(pady=6, fill="x")
+
+# staff
+ttk.Label(left, text="Staff Department/Area:").pack(anchor="w", pady=(10,0))
+staff_var = tk.StringVar()
+ttk.Combobox(left, textvariable=staff_var, values=list(contacts.keys()), state="readonly").pack(fill="x")
+ttk.Button(left, text="Search Staff", command=search_staff).pack(pady=6, fill="x")
+
+# clear output button
+def clear_output():
+    output_box.delete("1.0", tk.END)
+ttk.Button(left, text="Clear Output", command=clear_output).pack(pady=6, fill="x")
+
+# right frame: outputs + chatbot
+right = tk.Frame(main_frame)
+right.pack(side="left", padx=8, pady=8, fill="both", expand=True)
+
+# Output box (path & staff)
+ttk.Label(right, text="Output:").pack(anchor="w")
+output_box = tk.Text(right, height=14, width=70)
+output_box.pack(padx=4, pady=4, fill="both", expand=False)
+
+# Chatbot section
+ttk.Label(right, text="Campus Chatbot:").pack(anchor="w", pady=(10,0))
+chatbot_frame = tk.Frame(right)
+chatbot_frame.pack(fill="both", expand=True)
+
+chatbot_output = tk.Text(chatbot_frame, height=12, width=70, state="disabled")
+chatbot_output.pack(padx=4, pady=4)
+
+entry_frame = tk.Frame(chatbot_frame)
+entry_frame.pack(fill="x", padx=4, pady=4)
+chatbot_entry = ttk.Entry(entry_frame, width=60)
+chatbot_entry.pack(side="left", padx=(0,4), fill="x", expand=True)
+ttk.Button(entry_frame, text="Ask", command=chatbot_ask_text).pack(side="left")
+
+# quick reply buttons (predefined phrases)
+quick_btns_frame = tk.Frame(chatbot_frame)
+quick_btns_frame.pack(fill="x", padx=4, pady=4)
+quick_phrases = ["Hello", "Where is Library", "Who is VC", "Hostel contact", "Medical", "Sports", "Admission", "Map"]
+for i, phrase in enumerate(quick_phrases):
+    ttk.Button(quick_btns_frame, text=phrase, command=lambda p=phrase: quick_reply(p)).grid(row=i//4, column=i%4, padx=4, pady=4, sticky="ew")
+
+# start with a greeting
+chatbot_output_insert("Bot: Hello! I can help with campus locations, staff contacts, distances, and the map. Try typing or using the quick buttons.")
+
+# run
+root.mainloop()
+
