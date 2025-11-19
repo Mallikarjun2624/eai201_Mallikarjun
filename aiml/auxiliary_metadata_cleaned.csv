@@ -1,0 +1,13 @@
+animal_name,type,diet,conservation_status,conservation,habitats,status,diet_type
+aardvark,savanna,insectivore,least concern,,,,
+antelope,grasslands,herbivore,,near threatened,,,
+bass,freshwater,carnivore,least concern,,,,
+bear,,omnivore,vulnerable,,forest,,
+boar,forest,omnivore,,,,least concern,
+buffalo,grasslands,,,endangered,,,herbivore
+calf,domestic,herbivore,,,,,
+carp,freshwater,omnivore,least concern,,,,
+catfish,freshwater,carnivore,,,,,
+clam,marine,filter feeder,least concern,,,,
+crab,marinecoastal,omnivore,,least concern,,,
+deer,forest,herbivore,vulnerable,,,,

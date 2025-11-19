@@ -1,0 +1,108 @@
+animal_name,type,diet,conservation_status,conservation,habitats,status,diet_type,hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize,class_type,class_number,class_type_class,animal_names,ecosystem_type,predator_score
+aardvark,savanna,insectivore,least concern,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1,unknown,unknown,unknown,0,1
+antelope,grasslands,herbivore,unknown,near threatened,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,0,1
+bass,freshwater,carnivore,least concern,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,1,3
+bear,unknown,omnivore,vulnerable,unknown,forest,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1,unknown,unknown,unknown,3,2
+boar,forest,omnivore,unknown,unknown,unknown,least concern,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,0,2
+buffalo,grasslands,unknown,unknown,endangered,unknown,unknown,herbivore,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,0,1
+calf,domestic,herbivore,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1,unknown,unknown,unknown,0,1
+carp,freshwater,omnivore,least concern,unknown,unknown,unknown,unknown,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,4,unknown,unknown,unknown,1,2
+catfish,freshwater,carnivore,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,1,3
+clam,marine,filter feeder,least concern,unknown,unknown,unknown,unknown,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,7,unknown,unknown,unknown,2,1
+crab,marinecoastal,omnivore,unknown,least concern,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,0,0,4,0,0,0,7,unknown,unknown,unknown,2,2
+deer,forest,herbivore,vulnerable,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,0,1
+cavy,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0,1,unknown,unknown,unknown,3,1
+cheetah,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+chicken,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0,2,unknown,unknown,unknown,3,1
+chub,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+crayfish,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,0,0,6,0,0,0,7,unknown,unknown,unknown,3,1
+crow,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+dogfish,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,1,4,unknown,unknown,unknown,3,1
+dolphin,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1,unknown,unknown,unknown,3,1
+dove,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0,2,unknown,unknown,unknown,3,1
+duck,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,1,0,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+elephant,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+flamingo,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+flea,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,0,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+frog,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,1,0,0,4,0,0,0,5,unknown,unknown,unknown,3,1
+fruitbat,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,1,0,0,1,1,1,0,0,2,1,0,0,1,unknown,unknown,unknown,3,1
+giraffe,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+girl,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,2,0,1,1,1,unknown,unknown,unknown,3,1
+gnat,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,1,0,0,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+goat,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1,unknown,unknown,unknown,3,1
+gorilla,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,2,0,0,1,1,unknown,unknown,unknown,3,1
+gull,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,1,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+haddock,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,0,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+hamster,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,0,1,unknown,unknown,unknown,3,1
+hare,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,0,1,unknown,unknown,unknown,3,1
+hawk,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+herring,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+honeybee,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,1,0,1,0,0,0,0,1,1,0,6,0,1,0,6,unknown,unknown,unknown,3,1
+housefly,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,1,0,1,0,0,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+kiwi,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,0,0,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+ladybird,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,1,0,1,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+lark,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+leopard,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+lion,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+lobster,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,0,0,6,0,0,0,7,unknown,unknown,unknown,3,1
+lynx,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+mink,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,1,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+mole,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,0,1,unknown,unknown,unknown,3,1
+mongoose,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+moth,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,1,0,1,0,0,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+newt,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,1,0,0,4,1,0,0,5,unknown,unknown,unknown,3,1
+octopus,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,0,0,8,0,0,1,7,unknown,unknown,unknown,3,1
+opossum,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,0,1,unknown,unknown,unknown,3,1
+oryx,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+ostrich,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,0,0,0,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+parakeet,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0,2,unknown,unknown,unknown,3,1
+penguin,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,0,1,1,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+pheasant,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+pike,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,1,4,unknown,unknown,unknown,3,1
+piranha,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+pitviper,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,1,1,1,1,1,0,0,1,0,0,3,unknown,unknown,unknown,3,1
+platypus,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,1,1,0,1,1,0,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+polecat,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+pony,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1,unknown,unknown,unknown,3,1
+porpoise,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1,unknown,unknown,unknown,3,1
+puma,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+pussycat,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,1,1,1,unknown,unknown,unknown,3,1
+raccoon,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+reindeer,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1,unknown,unknown,unknown,3,1
+rhea,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,0,0,1,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+scorpion,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,0,0,0,0,1,0,0,1,1,0,8,1,0,0,7,unknown,unknown,unknown,3,1
+seahorse,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,0,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+seal,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,1,1,1,1,1,0,1,0,0,0,1,1,unknown,unknown,unknown,3,1
+sealion,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,1,1,1,1,1,0,1,2,1,0,1,1,unknown,unknown,unknown,3,1
+seasnake,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,0,0,0,1,1,1,1,0,1,0,0,1,0,0,3,unknown,unknown,unknown,3,1
+seawasp,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,1,0,0,0,0,0,7,unknown,unknown,unknown,3,1
+skimmer,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,1,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+skua,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,1,1,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+slowworm,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,1,1,1,1,0,0,0,1,0,0,3,unknown,unknown,unknown,3,1
+slug,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,7,unknown,unknown,unknown,3,1
+sole,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,0,1,1,0,0,1,0,1,0,0,4,unknown,unknown,unknown,3,1
+sparrow,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+squirrel,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,2,1,0,0,1,unknown,unknown,unknown,3,1
+starfish,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,0,0,0,0,0,5,0,0,0,7,unknown,unknown,unknown,3,1
+stingray,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,1,1,0,1,0,1,4,unknown,unknown,unknown,3,1
+swan,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,1,0,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+termite,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,0,0,0,1,0,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+toad,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,0,1,1,1,0,0,4,0,0,0,5,unknown,unknown,unknown,3,1
+tortoise,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,0,0,1,1,0,0,4,1,0,1,3,unknown,unknown,unknown,3,1
+tuatara,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,1,1,1,1,0,0,4,1,0,0,3,unknown,unknown,unknown,3,1
+tuna,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,1,4,unknown,unknown,unknown,3,1
+vampire,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,1,0,0,1,1,1,0,0,2,1,0,0,1,unknown,unknown,unknown,3,1
+vole,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,0,1,unknown,unknown,unknown,3,1
+vulture,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,1,0,1,1,0,0,2,1,0,1,2,unknown,unknown,unknown,3,1
+wallaby,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,0,1,1,1,0,0,2,1,0,1,1,unknown,unknown,unknown,3,1
+wasp,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,1,0,1,0,0,0,0,1,1,0,6,0,0,0,6,unknown,unknown,unknown,3,1
+wolf,unknown,unknown,unknown,unknown,unknown,unknown,unknown,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1,unknown,unknown,unknown,3,1
+worm,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,7,unknown,unknown,unknown,3,1
+wren,unknown,unknown,unknown,unknown,unknown,unknown,unknown,0,1,1,0,1,0,0,0,1,1,0,0,2,1,0,0,2,unknown,unknown,unknown,3,1
+41,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Mammal,1,unknown,"aardvark, antelope, bear, boar, buffalo, calf, cavy, cheetah, deer, dolphin, elephant, fruitbat, giraffe, girl, goat, gorilla, hamster, hare, leopard, lion, lynx, mink, mole, mongoose, opossum, oryx, platypus, polecat, pony, porpoise, puma, pussycat, raccoon, reindeer, seal, sealion, squirrel, vampire, vole, wallaby, wolf",3,1
+20,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Bird,2,unknown,"chicken, crow, dove, duck, flamingo, gull, hawk, kiwi, lark, ostrich, parakeet, penguin, pheasant, rhea, skimmer, skua, sparrow, swan, vulture, wren",3,1
+5,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Reptile,3,unknown,"pitviper, seasnake, slowworm, tortoise, tuatara",3,1
+13,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Fish,4,unknown,"bass, carp, catfish, chub, dogfish, haddock, herring, pike, piranha, seahorse, sole, stingray, tuna",3,1
+4,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Amphibian,5,unknown,"frog, frog, newt, toad",3,1
+8,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Bug,6,unknown,"flea, gnat, honeybee, housefly, ladybird, moth, termite, wasp",3,1
+10,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,Invertebrate,7,unknown,"clam, crab, crayfish, lobster, octopus, scorpion, seawasp, slug, starfish, worm",3,1

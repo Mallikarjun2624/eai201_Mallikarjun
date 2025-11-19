@@ -1,0 +1,157 @@
+from collections import deque
+import heapq
+
+class PipeNetwork:
+    def __init__(self, total_junctions):
+        self.graph = {i: [] for i in range(total_junctions)}
+
+    def add_pipe(self, u, v, cost):
+        self.graph[u].append((v, cost))
+        self.graph[v].append((u, cost))  # undirected
+
+
+# 1. BFS (ignores cost, shortest in edges)
+def bfs(network, start, goal):
+    queue = deque([(start, [start])])
+    visited = set()
+
+    while queue:
+        current, path = queue.popleft()
+        if current == goal:
+            return path
+
+        if current not in visited:
+            visited.add(current)
+            for neighbor, _ in network.graph[current]:
+                if neighbor not in visited:
+                    queue.append((neighbor, path + [neighbor]))
+    return None
+
+
+# 2. DFS (ignores cost, goes deep first)
+def dfs(network, current, goal, visited=None, path=None):
+    if visited is None:
+        visited = set()
+    if path is None:
+        path = []
+
+    visited.add(current)
+    path.append(current)
+
+    if current == goal:
+        return path
+
+    for neighbor, _ in network.graph[current]:
+        if neighbor not in visited:
+            result = dfs(network, neighbor, goal, visited, path)
+            if result:
+                return result
+
+    path.pop()
+    return None
+
+
+# 3. Uniform Cost Search (Dijkstra – finds lowest cost path)
+def uniform_cost_search(network, start, goal):
+    heap = [(0, start, [start])]  # (cost, node, path)
+    visited = {}
+
+    while heap:
+        cost, current, path = heapq.heappop(heap)
+
+        if current == goal:
+            return path, cost
+
+        if current in visited and visited[current] <= cost:
+            continue
+
+        visited[current] = cost
+
+        for neighbor, edge_cost in network.graph[current]:
+            total_cost = cost + edge_cost
+            heapq.heappush(heap, (total_cost, neighbor, path + [neighbor]))
+
+    return None, float('inf')
+
+
+# 4. A* Search (lowest cost with heuristic)
+def a_star_search(network, start, goal, heuristic):
+    heap = [(heuristic[start], 0, start, [start])]  # (f, g, node, path)
+    visited = {}
+
+    while heap:
+        f, g, current, path = heapq.heappop(heap)
+
+        if current == goal:
+            return path, g
+
+        if current in visited and visited[current] <= g:
+            continue
+
+        visited[current] = g
+
+        for neighbor, edge_cost in network.graph[current]:
+            g_new = g + edge_cost
+            f_new = g_new + heuristic[neighbor]
+            heapq.heappush(heap, (f_new, g_new, neighbor, path + [neighbor]))
+
+    return None, float('inf')
+
+
+# Main Program
+def main():
+    n, m = map(int, input("Enter number of junctions and pipes: ").split())
+    network = PipeNetwork(n)
+
+    print("Enter pipe connections (u v cost):")
+    for _ in range(m):
+        u, v, cost = map(int, input().split())
+        network.add_pipe(u, v, cost)
+
+    start = int(input("\nEnter start junction: "))
+    goal = int(input("Enter goal junction: "))
+
+    print("\nBFS (ignores cost):", bfs(network, start, goal))
+    print("DFS (ignores cost):", dfs(network, start, goal))
+
+    path, total_cost = uniform_cost_search(network, start, goal)
+    print(f"\nUniform Cost Search: {path} with total cost: {total_cost}")
+
+    print("\nEnter heuristic values for each junction:")
+    heuristic = {i: int(input(f"Heuristic for junction {i}: ")) for i in range(n)}
+
+    path, cost = a_star_search(network, start, goal, heuristic)
+    print(f"A* Search: {path} with total cost: {cost}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+#Input
+Enter number of junctions and pipes: 5 6
+Enter pipe connections (u v cost):
+0 1 2
+0 2 4
+1 2 1
+1 3 7
+2 4 3
+3 4 1
+
+Enter start junction: 0
+Enter goal junction: 4
+
+
+Enter heuristic values for each junction:
+Heuristic for junction 0: 7
+Heuristic for junction 1: 6
+Heuristic for junction 2: 2
+Heuristic for junction 3: 1
+Heuristic for junction 4: 0
+
+#output
+BFS (ignores cost): [0, 1, 2, 4]
+DFS (ignores cost): [0, 1, 3, 4]
+
+Uniform Cost Search: [0, 1, 2, 4] with total cost: 6
+A* Search: [0, 1, 2, 4] with total cost: 6
