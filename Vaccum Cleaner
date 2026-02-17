@@ -1,0 +1,135 @@
+# Here’s the execution of program 
+The program shows a main menu (cleaning, turning, docking, or stopping).
+If Start Cleaning is chosen, user selects Solid or Liquid, then the type (dust, rocks, water, etc.).
+The program calculates which shape (circle, square, triangle, hexagon) is best for cleaning and displays results.
+Users can also directly choose actions like Turn Left, Turn Right, or Dock Vacuum.
+The loop continues until the user selects Stop Program, ending execution.
+
+# Vaccum cleaner code
+def get_turn_radius(shape):
+    if shape == "circle":
+        return 1
+    elif shape == "square":
+        return 2
+    elif shape == "triangle":
+        return 3
+    elif shape == "hexagon":
+        return 1.5
+    else:
+        return 2
+
+def simulate_cleaning(shape, width, height):
+    cleaned_cells = 0
+    steps = 0
+    radius = get_turn_radius(shape)
+
+    for y in range(height):
+        if y % 2 == 0:
+            row = range(width)
+        else:
+            row = range(width - 1, -1, -1)
+
+        for _ in row:
+            cleaned_cells += 1
+            steps += radius
+    return cleaned_cells, steps
+
+def show_results(category, item):
+    shapes = ["circle", "square", "triangle", "hexagon"]
+    results = []
+
+    for shape in shapes:
+        cells, time = simulate_cleaning(shape, 10, 10)
+        results.append((shape, cells, time))
+
+    best = min(results, key=lambda s: s[2])
+
+    print("\nCleaning Category:", category)
+    print("Item:", item)
+    print("Best Shape Selected:", best[0].capitalize())
+    print("Total Cells Cleaned:", best[1])
+    print("Time Taken:", best[2], "steps")
+
+    print("\nTime Taken by Each Shape:")
+    for shape, cells, time in results:
+        print(f"{shape.capitalize()}: {time} steps")
+
+def clean_solid():
+    print("\n1. Dust")
+    print("2. Rocks/Papers")
+    print("3. Others")
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        show_results("Solid", "Dust")
+    elif choice == "2":
+        show_results("Solid", "Rocks/Papers")
+    elif choice == "3":
+        show_results("Solid", "Others")
+    else:
+        print("Invalid option.")
+
+def clean_liquid():
+    print("\n1. Water")
+    print("2. Beverage")
+    print("3. Others")
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        show_results("Liquid", "Water")
+    elif choice == "2":
+        show_results("Liquid", "Beverage")
+    elif choice == "3":
+        show_results("Liquid", "Others")
+    else:
+        print("Invalid option.")
+
+def start_cleaning():
+    print("\n1. Solid")
+    print("2. Liquid")
+    print("3. Back")
+    choice = input("Choose: ")
+
+    if choice == "1":
+        clean_solid()
+    elif choice == "2":
+        clean_liquid()
+    elif choice == "3":
+        return
+    else:
+        print("Invalid choice.")
+
+def turn_left():
+    print("Vacuum turned left.")
+
+def turn_right():
+    print("Vacuum turned right.")
+
+def dock_vacuum():
+    print("Vacuum docked.")
+
+def main():
+    while True:
+        print("\n--- Vacuum Menu ---")
+        print("1. Start Cleaning")
+        print("2. Turn Left")
+        print("3. Turn Right")
+        print("4. Dock Vacuum")
+        print("5. Stop")
+        choice = input("Enter: ")
+
+        if choice == "1":
+            start_cleaning()
+        elif choice == "2":
+            turn_left()
+        elif choice == "3":
+            turn_right()
+        elif choice == "4":
+            dock_vacuum()
+        elif choice == "5":
+            print("Vacuum stopped.")
+            break
+        else:
+            print("Invalid input.")
+
+main()
